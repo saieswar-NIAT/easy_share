@@ -40,8 +40,8 @@ export const CreateRideModal: React.FC<CreateRideModalProps> = ({
     const maxCarryOn = vehicleType === 'suv_xl' ? 4 : vehicleType === 'van' ? 6 : 2;
     const maxChecked = vehicleType === 'suv_xl' ? 4 : vehicleType === 'van' ? 6 : 2;
 
-    const baseFare = selectedZone ? selectedZone.estimatedTaxiRate : 65.0;
-    const airportFee = 7.50;
+    const baseFare = selectedZone ? selectedZone.estimatedTaxiRate : 750.0;
+    const airportFee = 120.0;
 
     const departureTimestamp = Date.now() + departureMinutes * 60 * 1000;
     const departureDate = new Date(departureTimestamp);
@@ -64,17 +64,17 @@ export const CreateRideModal: React.FC<CreateRideModalProps> = ({
       status: 'forming',
       baseMeterEstimate: baseFare,
       airportTollFee: airportFee,
-      platformFeePerRider: 1.25,
-      tipAmount: 10.0,
+      platformFeePerRider: 29.0,
+      tipAmount: 80.0,
       splitMethod: 'distance_optimized',
       escrowStatus: 'idle',
       notes: groupNotes,
       bookedRideshareDetails: {
-        service: vehicleType === 'suv_xl' ? 'Uber XL' : 'Airport Taxi',
+        service: vehicleType === 'suv_xl' ? 'Ola Prime SUV' : 'Airport Prepaid Taxi',
         driverName: 'Rideshare Requested',
-        carModel: vehicleType === 'suv_xl' ? 'Large SUV (7-seater)' : 'Standard Sedan',
+        carModel: vehicleType === 'suv_xl' ? 'Innova Crysta / XL SUV' : 'Standard Sedan',
         licensePlate: 'Pending',
-        pickupPillar: 'Level 2 Island Pillar 2B',
+        pickupPillar: 'MLCP Level 2 Pillar 14',
         etaMinutes: departureMinutes
       },
       members: [
@@ -83,8 +83,8 @@ export const CreateRideModal: React.FC<CreateRideModalProps> = ({
           joinedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           dropoffAddress,
           distanceMiles: selectedZone.distanceMiles,
-          splitAmount: (baseFare + airportFee + 10.0) / 1,
-          platformFee: 1.25,
+          splitAmount: (baseFare + airportFee + 80.0) / 1,
+          platformFee: 29.0,
           paymentStatus: 'pending',
           dropoffPin: String(Math.floor(1000 + Math.random() * 9000)),
           isCreator: true
@@ -167,7 +167,7 @@ export const CreateRideModal: React.FC<CreateRideModalProps> = ({
                 >
                   <div className="flex items-center justify-between text-xs font-bold text-slate-900">
                     <span>{zone.name}</span>
-                    <span className="font-mono text-blue-600">${zone.estimatedTaxiRate.toFixed(0)}</span>
+                    <span className="font-mono text-blue-600">₹{zone.estimatedTaxiRate.toFixed(0)}</span>
                   </div>
                   <div className="text-[11px] text-slate-500 truncate mt-0.5">{zone.tagline}</div>
                   <div className="text-[10px] text-slate-400 font-mono mt-1">

@@ -1,5 +1,13 @@
 import { GroupMember, RouteStop } from '../types';
 
+export const CURRENCY_SYMBOL = '₹';
+
+// Format amounts in Indian Rupees (e.g. ₹850 or ₹1,250.00)
+export function formatRupees(amount: number, showDecimals: boolean = true): string {
+  const formatted = showDecimals ? amount.toFixed(2) : Math.round(amount).toString();
+  return `₹${formatted}`;
+}
+
 export interface SplitResult {
   memberId: string;
   memberName: string;
@@ -33,8 +41,8 @@ export interface FareCalculationSummary {
   breakdown: SplitResult[];
 }
 
-// Low Commission Guarantee: flat $1.25 micro-fee vs 25%-35% commercial cuts
-export const PLATFORM_FEE_PER_RIDER = 1.25;
+// Low Commission Guarantee: flat ₹29 micro-fee vs 25%-35% commercial aggregator cuts (₹250-₹400)
+export const PLATFORM_FEE_PER_RIDER = 29;
 
 export function calculateFareSplits(
   members: GroupMember[],
@@ -68,13 +76,13 @@ export function calculateFareSplits(
     };
   }
 
-  // Calculate solo taxi cost baseline for each member based on their distance
-  const getSoloFare = (distance: number) => {
-    // Standard taxi formula: $3.50 flag drop + $3.25/mile + $5.50 airport fee
-    return Math.max(25, 3.50 + distance * 3.25 + airportTollFee);
+  // Calculate solo taxi cost baseline for each member based on their distance in Rupees
+  // Baseline solo airport prepaid cab: ₹150 flag drop + ₹26/km + ₹120 airport entry & toll
+  const getSoloFare = (distanceKm: number) => {
+    return Math.max(450, 150 + distanceKm * 28 + airportTollFee);
   };
 
-  // What commercial rideshare (Uber/Lyft) would take at ~28% platform commission:
+  // What commercial rideshare (Uber/Ola) would take at ~28% aggregator commission:
   const commercialCut = totalRideCost * 0.28;
   const competitorCommissionSaved = Math.max(0, commercialCut - totalPlatformFees);
 
@@ -83,11 +91,11 @@ export function calculateFareSplits(
     const perPersonTotal = perPersonRideShare + PLATFORM_FEE_PER_RIDER;
 
     const breakdown: SplitResult[] = members.map((m) => {
-      const solo = getSoloFare(m.distanceMiles || 14);
+      const solo = getSoloFare(m.distanceMiles || 22);
       return {
         memberId: m.user.id,
         memberName: m.user.name,
-        distanceMiles: m.distanceMiles || 14,
+        distanceMiles: m.distanceMiles || 22,
         fixedShare: Number((airportTollFee / riderCount).toFixed(2)),
         distanceShare: Number((baseFare / riderCount).toFixed(2)),
         tipShare: Number((tipAmount / riderCount).toFixed(2)),
@@ -116,7 +124,7 @@ export function calculateFareSplits(
       totalSavedCombined: Number(totalSavedCombined.toFixed(2)),
       competitorCommissionSaved: Number(competitorCommissionSaved.toFixed(2)),
       escrowHoldTotal: Number(totalRideCost.toFixed(2)),
-      netCreatorPayout: Number(totalRideCost.toFixed(2)), // 100% of ride fare + tip goes to creator/driver!
+      netCreatorPayout: Number(totalRideCost.toFixed(2)), // 100% of ride fare + tip goes to creator/driver in Rupees!
       breakdown
     };
   }
@@ -131,7 +139,7 @@ export function calculateFareSplits(
   const fixedSharePerPerson = airportTollFee / riderCount;
   const tipSharePerPerson = tipAmount / riderCount;
 
-  const totalRouteMiles = Math.max(1, sortedStops[sortedStops.length - 1]?.distanceFromAirportMiles || 15);
+  const totalRouteMiles = Math.max(1, sortedStops[sortedStops.length - 1]?.distanceFromAirportMiles || 24);
   const costPerMile = baseFare / totalRouteMiles;
 
   const distanceShareMap = new Map<string, number>();
@@ -159,11 +167,11 @@ export function calculateFareSplits(
   const breakdown: SplitResult[] = members.map((m) => {
     const distShare = distanceShareMap.get(m.user.id) || (baseFare / riderCount);
     const totalDue = Number((fixedSharePerPerson + distShare + tipSharePerPerson + PLATFORM_FEE_PER_RIDER).toFixed(2));
-    const solo = getSoloFare(m.distanceMiles || 14);
+    const solo = getSoloFare(m.distanceMiles || 22);
     return {
       memberId: m.user.id,
       memberName: m.user.name,
-      distanceMiles: m.distanceMiles || 14,
+      distanceMiles: m.distanceMiles || 22,
       fixedShare: Number(fixedSharePerPerson.toFixed(2)),
       distanceShare: Number(distShare.toFixed(2)),
       tipShare: Number(tipSharePerPerson.toFixed(2)),
@@ -192,7 +200,7 @@ export function calculateFareSplits(
     totalSavedCombined: Number(totalSavedCombined.toFixed(2)),
     competitorCommissionSaved: Number(competitorCommissionSaved.toFixed(2)),
     escrowHoldTotal: Number(totalRideCost.toFixed(2)),
-    netCreatorPayout: Number(totalRideCost.toFixed(2)), // 100% of ride goes to creator!
+    netCreatorPayout: Number(totalRideCost.toFixed(2)),
     breakdown
   };
 }

@@ -102,11 +102,11 @@ export const DiscoveryHub: React.FC<DiscoveryHubProps> = ({
             <div className="font-bold text-emerald-950 flex items-center gap-1.5">
               <span>Fair Platform Pricing & Bank-Grade Escrow</span>
               <span className="bg-emerald-200/80 text-emerald-900 px-2 py-0.2 rounded-full text-[10px] font-bold">
-                FLAT $1.25 FEE
+                FLAT ₹29 FEE
               </span>
             </div>
             <div className="text-[11px] text-emerald-800 mt-0.5">
-              We never take 30% surge cuts. Passengers split raw taxi meters + $1.25 flat micro-fee, and funds are held in escrow until safe drop-off.
+              We never take 30% surge cuts. Passengers split raw taxi/cab fares + ₹29 flat micro-fee, and funds are held in escrow until safe drop-off.
             </div>
           </div>
         </div>
@@ -163,10 +163,10 @@ export const DiscoveryHub: React.FC<DiscoveryHubProps> = ({
                   </div>
                   <div className="text-right">
                     <span className="text-xs text-slate-400 line-through font-mono">
-                      ${zone.estimatedTaxiRate.toFixed(0)}
+                      ₹{zone.estimatedTaxiRate.toFixed(0)}
                     </span>
                     <div className="text-base font-extrabold text-blue-600 font-mono">
-                      ~${splitAvgRate.toFixed(0)}
+                      ~₹{splitAvgRate.toFixed(0)}
                       <span className="text-[10px] text-slate-500 font-normal">/rider</span>
                     </div>
                   </div>
@@ -268,7 +268,7 @@ export const DiscoveryHub: React.FC<DiscoveryHubProps> = ({
               const isMember = group.members.some(m => m.user.id === currentUser.id);
               const spotsLeft = group.maxRiders - group.members.length;
               const isFull = spotsLeft <= 0;
-              const estimatedTotal = group.baseMeterEstimate + group.airportTollFee + (group.tipAmount || 10.0);
+              const estimatedTotal = group.baseMeterEstimate + group.airportTollFee + (group.tipAmount || 80.0);
               const perPersonFare = estimatedTotal / Math.max(1, group.members.length + (isMember ? 0 : 1));
 
               // Check if anyone in this group shares our carousel
@@ -329,7 +329,7 @@ export const DiscoveryHub: React.FC<DiscoveryHubProps> = ({
                       </div>
 
                       <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
-                        {group.vehicleType === 'suv_xl' ? 'Uber XL' : 'Standard Sedan'}
+                        {group.vehicleType === 'suv_xl' ? 'Uber XL / Prime SUV' : 'Airport Taxi / Sedan'}
                       </span>
                     </div>
 
@@ -352,9 +352,9 @@ export const DiscoveryHub: React.FC<DiscoveryHubProps> = ({
                         {isMember ? 'Your Share' : 'Est. Share'}
                       </div>
                       <div className="text-lg font-extrabold font-mono text-slate-900">
-                        ${perPersonFare.toFixed(2)}
+                        ₹{perPersonFare.toFixed(0)}
                         <span className="text-[10px] text-emerald-600 font-normal ml-1">
-                          (Save ${(group.baseMeterEstimate - perPersonFare).toFixed(0)})
+                          (Save ₹{(group.baseMeterEstimate - perPersonFare).toFixed(0)})
                         </span>
                       </div>
                     </div>

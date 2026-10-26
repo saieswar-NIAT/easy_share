@@ -18,7 +18,8 @@ import { Toast, ToastNotification } from './components/Toast';
 import { 
   AIRPORTS, 
   INITIAL_USER, 
-  DESTINATION_ZONES_SFO, 
+  DESTINATION_ZONES_DEL,
+  getDestinationZonesForAirport,
   INITIAL_GROUPS, 
   INITIAL_CHAT_MESSAGES,
   INITIAL_PAYMENTS 
@@ -29,7 +30,7 @@ export default function App() {
   const [currentAirport, setCurrentAirport] = useState<AirportInfo>(AIRPORTS[0]);
   const [currentUser, setCurrentUser] = useState<UserProfile>(INITIAL_USER);
   const [groups, setGroups] = useState<RideGroup[]>(INITIAL_GROUPS);
-  const [activeGroupId, setActiveGroupId] = useState<string>('grp_01_downtown');
+  const [activeGroupId, setActiveGroupId] = useState<string>('grp_01_cybercity');
   const [chatMessages, setChatMessages] = useState<Record<string, ChatMessage[]>>(INITIAL_CHAT_MESSAGES);
   const [payments, setPayments] = useState<PaymentRecord[]>(INITIAL_PAYMENTS);
   const [activeTab, setActiveTab] = useState<'discovery' | 'my_ride'>('discovery');
@@ -103,7 +104,7 @@ export default function App() {
       dropoffAddress: defaultAddress,
       distanceMiles,
       splitAmount: (group.baseMeterEstimate + group.airportTollFee) / (group.members.length + 1),
-      platformFee: 1.25,
+      platformFee: 29.0,
       paymentStatus: 'pre_authorized' as const,
       dropoffPin: String(Math.floor(1000 + Math.random() * 9000)),
       isConfirmedDropoff: false
@@ -137,10 +138,10 @@ export default function App() {
       senderId: 'system',
       senderName: 'easy_share Bot',
       senderAvatar: '',
-      text: `🎉 ${currentUser.name} joined the ride group! Pre-authorized in escrow. Estimated fare updated to $${(
-        (group.baseMeterEstimate + group.airportTollFee + (group.tipAmount || 10) + updatedGroup.members.length * 1.25) /
+      text: `🎉 ${currentUser.name} joined the ride group! Pre-authorized in escrow. Estimated fare updated to ₹${(
+        (group.baseMeterEstimate + group.airportTollFee + (group.tipAmount || 80) + updatedGroup.members.length * 29) /
         updatedGroup.members.length
-      ).toFixed(2)}/rider.`,
+      ).toFixed(0)}/rider.`,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       type: 'system'
     };
@@ -301,7 +302,7 @@ export default function App() {
       id: 'toast_fare_updated',
       type: 'success',
       title: 'Fare & Split Updated',
-      message: `Total meter set to $${baseFare.toFixed(2)} with ${splitMethod === 'equal' ? 'Equal' : 'Distance-Optimized'} split.`
+      message: `Total meter set to ₹${baseFare.toFixed(2)} with ${splitMethod === 'equal' ? 'Equal' : 'Distance-Optimized'} split.`
     });
   };
 
@@ -337,7 +338,7 @@ export default function App() {
           );
         }
 
-        const totalRide = (activeGroup.baseMeterEstimate || 66) + activeGroup.airportTollFee + (activeGroup.tipAmount || 10);
+        const totalRide = (activeGroup.baseMeterEstimate || 950) + activeGroup.airportTollFee + (activeGroup.tipAmount || 100);
         const perRider = totalRide / Math.max(1, activeGroup.members.length);
 
         const newRec: PaymentRecord = {
@@ -353,13 +354,13 @@ export default function App() {
           coRiders: activeGroup.members.filter((m) => m.user.id !== currentUser.id).map((m) => m.user.name),
           splitMethod: activeGroup.splitMethod,
           totalRideCost: totalRide,
-          myFareShare: (activeGroup.baseMeterEstimate || 66) / Math.max(1, activeGroup.members.length),
+          myFareShare: (activeGroup.baseMeterEstimate || 950) / Math.max(1, activeGroup.members.length),
           myTollShare: activeGroup.airportTollFee / Math.max(1, activeGroup.members.length),
-          myTipShare: (activeGroup.tipAmount || 10) / Math.max(1, activeGroup.members.length),
-          platformFee: 1.25,
-          totalAmountPaid: Number((perRider + 1.25).toFixed(2)),
-          savingsVsSolo: 42.50,
-          paymentMethod: 'Apple Pay (Visa •••• 4242)',
+          myTipShare: (activeGroup.tipAmount || 100) / Math.max(1, activeGroup.members.length),
+          platformFee: 29.0,
+          totalAmountPaid: Number((perRider + 29).toFixed(2)),
+          savingsVsSolo: 780.0,
+          paymentMethod: 'UPI / Google Pay (HDFC •••• 4242)',
           status: 'settled',
           dropoffPin: '8214',
           receiptNumber: `ES-2026-${activeGroup.airportCode}-${Math.floor(1000 + Math.random() * 9000)}`
@@ -409,7 +410,7 @@ export default function App() {
         {activeTab === 'discovery' ? (
           <DiscoveryHub
             currentAirport={currentAirport}
-            destinationZones={DESTINATION_ZONES_SFO}
+            destinationZones={getDestinationZonesForAirport(currentAirport.code)}
             groups={groups}
             currentUser={currentUser}
             onSelectGroup={(grp) => {
@@ -452,7 +453,7 @@ export default function App() {
       {isCreateRideOpen && (
         <CreateRideModal
           currentAirport={currentAirport}
-          zones={DESTINATION_ZONES_SFO}
+          zones={getDestinationZonesForAirport(currentAirport.code)}
           user={currentUser}
           onClose={() => setIsCreateRideOpen(false)}
           onCreateGroup={handleCreateGroup}

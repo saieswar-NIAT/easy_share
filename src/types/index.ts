@@ -95,7 +95,7 @@ export interface RideGroup {
   stops: RouteStop[];
   notes?: string;
   bookedRideshareDetails?: {
-    service: 'Uber XL' | 'Lyft Extra Comfort' | 'Airport Taxi';
+    service: 'Uber XL' | 'Ola Prime SUV' | 'Airport Prepaid Taxi' | 'BluSmart' | 'Airport Taxi' | string;
     driverName: string;
     carModel: string;
     licensePlate: string;

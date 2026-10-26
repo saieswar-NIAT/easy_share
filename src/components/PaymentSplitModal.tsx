@@ -25,8 +25,8 @@ export const PaymentSplitModal: React.FC<PaymentSplitModalProps> = ({
   onOpenSecurityModal,
   onOpenPaymentHistory
 }) => {
-  const [baseFare, setBaseFare] = useState<number>(group.finalFare || group.baseMeterEstimate || 66.0);
-  const [tipAmount, setTipAmount] = useState<number>(group.tipAmount || 10.0);
+  const [baseFare, setBaseFare] = useState<number>(group.finalFare || group.baseMeterEstimate || 950.0);
+  const [tipAmount, setTipAmount] = useState<number>(group.tipAmount || 100.0);
   const [splitMethod, setSplitMethod] = useState<'equal' | 'distance_optimized'>(group.splitMethod || 'distance_optimized');
   const [copiedReceipt, setCopiedReceipt] = useState(false);
   const [paymentProcessing, setPaymentProcessing] = useState<string | null>(null);
@@ -39,7 +39,7 @@ export const PaymentSplitModal: React.FC<PaymentSplitModalProps> = ({
     group.members,
     group.stops,
     baseFare,
-    group.airportTollFee || 7.50,
+    group.airportTollFee || 120.0,
     tipAmount,
     splitMethod
   );
@@ -70,13 +70,13 @@ export const PaymentSplitModal: React.FC<PaymentSplitModalProps> = ({
     const text = `🚕 easy_share Low-Commission Fare Breakdown
 Group: ${group.title}
 Airport: ${group.airportCode}
-Total Meter & Airport Fees: $${(fareSummary.baseFare + fareSummary.airportTollFee).toFixed(2)}
-Driver Tip: $${fareSummary.tipAmount.toFixed(2)}
-easy_share Low Platform Fee: $${PLATFORM_FEE_PER_RIDER.toFixed(2)} per rider (Flat micro-fee vs 30% aggregator cut)
-Total Competitor Commission Saved: $${fareSummary.competitorCommissionSaved.toFixed(2)}
+Total Meter & Airport Fees: ₹${(fareSummary.baseFare + fareSummary.airportTollFee).toFixed(2)}
+Driver Tip: ₹${fareSummary.tipAmount.toFixed(2)}
+easy_share Low Platform Fee: ₹${PLATFORM_FEE_PER_RIDER.toFixed(2)} per rider (Flat micro-fee vs 30% aggregator cut)
+Total Competitor Commission Saved: ₹${fareSummary.competitorCommissionSaved.toFixed(2)}
 
 Breakdown per passenger:
-${fareSummary.breakdown.map(b => `• ${b.memberName}: $${b.totalDue.toFixed(2)} (Incl. $${b.platformFee.toFixed(2)} micro-fee · Saved $${b.savingsVsSolo.toFixed(2)})`).join('\n')}
+${fareSummary.breakdown.map(b => `• ${b.memberName}: ₹${b.totalDue.toFixed(2)} (Incl. ₹${b.platformFee.toFixed(2)} micro-fee · Saved ₹${b.savingsVsSolo.toFixed(2)})`).join('\n')}
 
 Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
 
@@ -147,11 +147,11 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
                 <div className="font-bold text-emerald-950 flex items-center gap-1.5">
                   <span>Transparent Low Commission Policy</span>
                   <span className="bg-emerald-200/80 text-emerald-900 px-1.5 py-0.2 rounded text-[10px] font-mono font-bold">
-                    FLAT $1.25 / RIDER
+                    FLAT ₹29 / RIDER
                   </span>
                 </div>
                 <div className="text-[11px] text-emerald-800 mt-0.5">
-                  Instead of taking a 30% cut ($20+), easy_share only charges a flat $1.25 micro-fee per passenger to cover bank processing and fraud escrow.
+                  Instead of taking a 30% cut (₹250+), easy_share only charges a flat ₹29 micro-fee per passenger to cover bank processing and fraud escrow.
                 </div>
               </div>
             </div>
@@ -159,7 +159,7 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
             <div className="bg-white/80 px-3 py-1.5 rounded-xl border border-emerald-200 shrink-0 text-right">
               <span className="text-[10px] text-slate-500 uppercase font-bold block">Commission Saved</span>
               <span className="text-sm font-bold font-mono text-emerald-700">
-                +${fareSummary.competitorCommissionSaved.toFixed(2)}
+                +₹{fareSummary.competitorCommissionSaved.toFixed(2)}
               </span>
             </div>
           </div>
@@ -180,13 +180,13 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
               {/* Base Meter Fare */}
               <div>
                 <label className="block text-[11px] font-medium text-slate-500 mb-1">
-                  Meter / App Fare ($)
+                  Meter / App Fare (₹)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2.5 text-xs text-slate-400 font-mono">$</span>
+                  <span className="absolute left-3 top-2.5 text-xs text-slate-400 font-mono">₹</span>
                   <input
                     type="number"
-                    step="0.50"
+                    step="10"
                     disabled={!isCreator}
                     value={baseFare}
                     onChange={(e) => setBaseFare(Math.max(0, parseFloat(e.target.value) || 0))}
@@ -198,10 +198,10 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
               {/* Airport / Bridge Toll Fee */}
               <div>
                 <label className="block text-[11px] font-medium text-slate-500 mb-1">
-                  Airport Fee + Toll ($)
+                  Airport Fee + Toll (₹)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2.5 text-xs text-slate-400 font-mono">$</span>
+                  <span className="absolute left-3 top-2.5 text-xs text-slate-400 font-mono">₹</span>
                   <input
                     type="number"
                     disabled
@@ -214,13 +214,13 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
               {/* Tip Selection */}
               <div>
                 <label className="block text-[11px] font-medium text-slate-500 mb-1">
-                  Driver Tip (100% to Driver) ($)
+                  Driver Tip (100% to Driver) (₹)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2.5 text-xs text-slate-400 font-mono">$</span>
+                  <span className="absolute left-3 top-2.5 text-xs text-slate-400 font-mono">₹</span>
                   <input
                     type="number"
-                    step="1.0"
+                    step="10.0"
                     disabled={!isCreator}
                     value={tipAmount}
                     onChange={(e) => setTipAmount(Math.max(0, parseFloat(e.target.value) || 0))}
@@ -280,7 +280,7 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
                 <div className="font-bold flex items-center gap-1.5">
                   <span>Escrow Ride Protection: Active</span>
                   <span className="text-emerald-400 font-mono text-[11px] font-semibold">
-                    ${fareSummary.escrowHoldTotal.toFixed(2)} Secured
+                    ₹{fareSummary.escrowHoldTotal.toFixed(2)} Secured
                   </span>
                 </div>
                 <div className="text-[11px] text-slate-400">
@@ -292,7 +292,7 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
             <div className="text-right shrink-0">
               <span className="text-[10px] text-slate-400 block font-mono">Net Creator Payout</span>
               <span className="text-sm font-bold font-mono text-emerald-400">
-                ${fareSummary.netCreatorPayout.toFixed(2)} (100%)
+                ₹{fareSummary.netCreatorPayout.toFixed(2)} (100%)
               </span>
             </div>
           </div>
@@ -369,10 +369,10 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
                       {/* Right: Calculated amount & platform fee detail */}
                       <div className="text-right shrink-0">
                         <div className="text-sm font-bold font-mono text-slate-900">
-                          ${item.totalDue.toFixed(2)}
+                          ₹{item.totalDue.toFixed(2)}
                         </div>
                         <div className="text-[10px] text-slate-400 font-mono">
-                          includes ${item.platformFee.toFixed(2)} fee
+                          includes ₹{item.platformFee.toFixed(2)} fee
                         </div>
                       </div>
                     </div>
@@ -423,7 +423,7 @@ Security: 256-bit Tokenized Bank Escrow. All funds held until safe arrival.`;
                             className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-xs cursor-pointer transition-colors flex items-center gap-1.5"
                           >
                             <CreditCard className="w-3.5 h-3.5" />
-                            <span>{paymentProcessing === item.memberId ? 'Authorizing...' : 'Authorize Apple Pay'}</span>
+                            <span>{paymentProcessing === item.memberId ? 'Authorizing...' : 'Authorize UPI / Card'}</span>
                           </button>
                         ) : (
                           <span className="text-[11px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md font-medium border border-amber-200">

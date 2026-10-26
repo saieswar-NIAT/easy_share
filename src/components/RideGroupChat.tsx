@@ -95,7 +95,7 @@ export const RideGroupChat: React.FC<RideGroupChatProps> = ({
                   {group.title}
                 </h2>
                 <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
-                  {group.vehicleType === 'suv_xl' ? 'Uber XL' : 'Taxi Sedan'}
+                  {group.vehicleType === 'suv_xl' ? 'Uber XL / Prime SUV' : 'Taxi Sedan'}
                 </span>
               </div>
               <p className="text-xs text-slate-500 truncate mt-0.5">
@@ -119,7 +119,7 @@ export const RideGroupChat: React.FC<RideGroupChatProps> = ({
               className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
             >
               <CreditCard className="w-3.5 h-3.5" />
-              <span>Fare Split (${perPersonCost.toFixed(2)})</span>
+              <span>Fare Split (₹{perPersonCost.toFixed(0)})</span>
             </button>
           </div>
 
@@ -129,18 +129,18 @@ export const RideGroupChat: React.FC<RideGroupChatProps> = ({
         <div className="mt-3 p-3 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50 to-emerald-50/50 border border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold font-mono text-sm shadow-xs shrink-0">
-              ${perPersonCost.toFixed(0)}
+              ₹{perPersonCost.toFixed(0)}
             </div>
             <div>
               <div className="font-bold text-slate-900 flex items-center gap-1.5 flex-wrap">
                 <span>Estimated Cost per Person</span>
-                <span className="text-slate-400 font-normal">(${estimatedTotalFare.toFixed(2)} total ÷ {totalRiders} riders)</span>
+                <span className="text-slate-400 font-normal">(₹{estimatedTotalFare.toFixed(0)} total ÷ {totalRiders} riders)</span>
                 <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-1.5 py-0.2 rounded font-mono">
-                  $1.25 FEE
+                  ₹29 FEE
                 </span>
               </div>
               <div className="text-[11px] text-emerald-700 font-medium flex items-center gap-2 mt-0.5">
-                <span>You save <strong>${estimatedSavings.toFixed(2)}</strong> vs solo taxi!</span>
+                <span>You save <strong>₹{estimatedSavings.toFixed(0)}</strong> vs solo taxi!</span>
                 <span className="text-slate-300">·</span>
                 <span className="text-slate-600 flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3 text-emerald-600" />

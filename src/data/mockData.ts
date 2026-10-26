@@ -2,44 +2,54 @@ import { AirportInfo, DestinationZone, RideGroup, UserProfile, ChatMessage, Paym
 
 export const AIRPORTS: AirportInfo[] = [
   {
+    code: 'DEL',
+    name: 'Indira Gandhi International Airport',
+    city: 'New Delhi',
+    state: 'Delhi',
+    country: 'India',
+    ridesharePillarGuide: 'Terminal 3: Multi-Level Car Parking (MLCP) Level 2 & 4, Ola/Uber/Prepaid Island Pillars 12–18. Terminal 2: Curbside Pickup Bay 3.',
+    terminals: ['Terminal 3 (Domestic & Int\'l)', 'Terminal 2', 'Terminal 1D'],
+    carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4', 'Carousel 5', 'Carousel 6', 'Carousel 7', 'Carousel 8']
+  },
+  {
+    code: 'BOM',
+    name: 'Chhatrapati Shivaji Maharaj International Airport',
+    city: 'Mumbai',
+    state: 'Maharashtra',
+    country: 'India',
+    ridesharePillarGuide: 'Terminal 2: Level P7 Parking, Designated App-Cab Pickup Zone Pillars A1-A6. Terminal 1: Arrival Curbside Bay 2.',
+    terminals: ['Terminal 2 (T2)', 'Terminal 1 (Domestic T1)'],
+    carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4', 'Carousel 5', 'Carousel 6']
+  },
+  {
+    code: 'BLR',
+    name: 'Kempegowda International Airport',
+    city: 'Bengaluru',
+    state: 'Karnataka',
+    country: 'India',
+    ridesharePillarGuide: 'Terminal 1 & 2: Curbside App-Taxi Pickup Zone, Bays 1 to 5 behind Airport Bus Stand.',
+    terminals: ['Terminal 1', 'Terminal 2 (Garden Terminal)'],
+    carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4', 'Carousel 5']
+  },
+  {
+    code: 'HYD',
+    name: 'Rajiv Gandhi International Airport',
+    city: 'Hyderabad',
+    state: 'Telangana',
+    country: 'India',
+    ridesharePillarGuide: 'Arrivals Ground Level: Parking Bay C, Ola/Uber Designated Zone Pillars 4-8.',
+    terminals: ['Main Passenger Terminal'],
+    carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4']
+  },
+  {
     code: 'SFO',
     name: 'San Francisco International Airport',
     city: 'San Francisco',
     state: 'CA',
     country: 'USA',
-    ridesharePillarGuide: 'Terminal 2 & 3: Level 2 Departures / Rideshare Island. Int\'l: Level 3 Center Island Courtyard G.',
-    terminals: ['Terminal 1 (Harvey Milk)', 'Terminal 2', 'Terminal 3', 'International Terminal'],
-    carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4', 'Carousel 5', 'Carousel 6']
-  },
-  {
-    code: 'JFK',
-    name: 'John F. Kennedy International Airport',
-    city: 'New York',
-    state: 'NY',
-    country: 'USA',
-    ridesharePillarGuide: 'Terminal 4 & 5: Inner ring frontage pick-up zone, Pillars A-D.',
-    terminals: ['Terminal 1', 'Terminal 4', 'Terminal 5', 'Terminal 7', 'Terminal 8'],
-    carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4', 'Carousel 5']
-  },
-  {
-    code: 'ORD',
-    name: 'Chicago O\'Hare International Airport',
-    city: 'Chicago',
-    state: 'IL',
-    country: 'USA',
-    ridesharePillarGuide: 'Terminal 2 Upper Level (Ticketing), Departures Curbside Zone 2B-2E.',
-    terminals: ['Terminal 1', 'Terminal 2', 'Terminal 3', 'Terminal 5'],
+    ridesharePillarGuide: 'Terminal 2 & 3: Level 2 Departures / Rideshare Island. Int\'l: Level 3 Center Island.',
+    terminals: ['Terminal 1', 'Terminal 2', 'Terminal 3', 'International'],
     carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4']
-  },
-  {
-    code: 'LAX',
-    name: 'Los Angeles International Airport',
-    city: 'Los Angeles',
-    state: 'CA',
-    country: 'USA',
-    ridesharePillarGuide: 'LAX-it Lot next to Terminal 1, reachable by Green Shuttle or 4-min walk.',
-    terminals: ['Terminal 1', 'Terminal 2', 'Terminal 3', 'Tom Bradley Int\'l', 'Terminal 4', 'Terminal 5', 'Terminal 6', 'Terminal 7'],
-    carousels: ['Carousel 1', 'Carousel 2', 'Carousel 3', 'Carousel 4', 'Carousel 5']
   }
 ];
 
@@ -54,42 +64,42 @@ export const SAMPLE_TICKETS: Array<{
   arrival: string;
 }> = [
   {
-    flightNumber: 'UA 1248',
-    airline: 'United Airlines',
-    from: 'Denver (DEN)',
-    airportCode: 'SFO',
-    terminal: 'Terminal 2',
-    gate: 'Gate 54',
+    flightNumber: '6E 214',
+    airline: 'IndiGo Airlines',
+    from: 'Mumbai (BOM)',
+    airportCode: 'DEL',
+    terminal: 'Terminal 3',
+    gate: 'Gate 28',
     carousel: 'Carousel 4',
     arrival: '4:15 PM'
   },
   {
-    flightNumber: 'AS 338',
-    airline: 'Alaska Airlines',
-    from: 'Seattle (SEA)',
-    airportCode: 'SFO',
-    terminal: 'Terminal 2',
-    gate: 'Gate 51',
+    flightNumber: 'AI 802',
+    airline: 'Air India',
+    from: 'Bengaluru (BLR)',
+    airportCode: 'DEL',
+    terminal: 'Terminal 3',
+    gate: 'Gate 32',
     carousel: 'Carousel 4', // Same carousel for alert test!
     arrival: '4:18 PM'
   },
   {
-    flightNumber: 'DL 402',
-    airline: 'Delta Air Lines',
-    from: 'Salt Lake City (SLC)',
-    airportCode: 'SFO',
-    terminal: 'Terminal 1',
-    gate: 'Gate B14',
+    flightNumber: 'UK 945',
+    airline: 'Vistara',
+    from: 'Hyderabad (HYD)',
+    airportCode: 'DEL',
+    terminal: 'Terminal 3',
+    gate: 'Gate 19',
     carousel: 'Carousel 2',
     arrival: '4:22 PM'
   },
   {
-    flightNumber: 'AA 1092',
-    airline: 'American Airlines',
-    from: 'Dallas (DFW)',
-    airportCode: 'SFO',
-    terminal: 'Terminal 1',
-    gate: 'Gate B8',
+    flightNumber: 'QP 131',
+    airline: 'Akasa Air',
+    from: 'Goa (GOX)',
+    airportCode: 'DEL',
+    terminal: 'Terminal 2',
+    gate: 'Gate 14',
     carousel: 'Carousel 1',
     arrival: '4:25 PM'
   }
@@ -97,14 +107,14 @@ export const SAMPLE_TICKETS: Array<{
 
 export const INITIAL_USER: UserProfile = {
   id: 'usr_me_01',
-  name: 'Alex Rivera',
+  name: 'Rohan Sharma',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
   isVerified: true,
-  flightNumber: 'UA 1248',
-  airline: 'United Airlines',
-  arrivalAirport: 'SFO',
-  terminal: 'Terminal 2',
-  gate: 'Gate 54',
+  flightNumber: '6E 214',
+  airline: 'IndiGo',
+  arrivalAirport: 'DEL',
+  terminal: 'Terminal 3',
+  gate: 'Gate 28',
   baggageCarousel: 'Carousel 4',
   scheduledArrival: '4:15 PM',
   luggage: {
@@ -114,97 +124,208 @@ export const INITIAL_USER: UserProfile = {
   },
   status: 'baggage_claim',
   statusText: 'Waiting at Carousel 4',
-  currentZoneLocation: 'Baggage Claim Hall (Level 1)'
+  currentZoneLocation: 'T3 Baggage Claim Hall (Ground Floor)'
 };
 
-export const DESTINATION_ZONES_SFO: DestinationZone[] = [
+export const DESTINATION_ZONES_DEL: DestinationZone[] = [
   {
-    id: 'zone_downtown',
-    name: 'Downtown & Union Square',
-    tagline: 'Hotels, shopping district & Powell St corridor',
-    airportCode: 'SFO',
-    distanceMiles: 14.2,
+    id: 'zone_cybercity',
+    name: 'Gurgaon Cyber City & Golf Course Rd',
+    tagline: 'DLF CyberHub, tech corporate parks & Horizon Centre',
+    airportCode: 'DEL',
+    distanceMiles: 16.5,
     typicalDurationMin: 28,
-    estimatedTaxiRate: 64.0,
+    estimatedTaxiRate: 950.0,
     popularDropoffs: [
-      'Westin St. Francis (335 Powell St)',
-      'Marriott Marquis (780 Mission St)',
-      'Palace Hotel (2 New Montgomery St)',
-      'Grand Hyatt Union Square'
+      'The Leela Ambience Gurugram (Ambience Island)',
+      'DLF Cyber City Building 10',
+      'One Horizon Center (Golf Course Rd)',
+      'Westin Gurgaon (MG Road)'
+    ],
+    activePassengersCount: 16
+  },
+  {
+    id: 'zone_cp',
+    name: 'Connaught Place & Central Delhi',
+    tagline: 'Lutyens Delhi, Janpath, hotels & business district',
+    airportCode: 'DEL',
+    distanceMiles: 18.2,
+    typicalDurationMin: 35,
+    estimatedTaxiRate: 850.0,
+    popularDropoffs: [
+      'The Taj Mahal Hotel (1 Mansingh Rd)',
+      'The Lalit New Delhi (Barakhamba Rd)',
+      'Shangri-La Eros (19 Ashoka Rd)',
+      'Connaught Place Inner Circle'
+    ],
+    activePassengersCount: 21
+  },
+  {
+    id: 'zone_aerocity',
+    name: 'Aerocity Hospitality District',
+    tagline: 'Aerocity luxury hotels, Worldmark & conference centres',
+    airportCode: 'DEL',
+    distanceMiles: 4.8,
+    typicalDurationMin: 12,
+    estimatedTaxiRate: 480.0,
+    popularDropoffs: [
+      'JW Marriott Hotel Aerocity',
+      'Andaz Delhi (Worldmark 1)',
+      'Aloft New Delhi Aerocity'
+    ],
+    activePassengersCount: 11
+  },
+  {
+    id: 'zone_noida',
+    name: 'Noida Sector 62 & IT Corridor',
+    tagline: 'Expressway tech campuses, Sector 18 & Film City',
+    airportCode: 'DEL',
+    distanceMiles: 34.0,
+    typicalDurationMin: 55,
+    estimatedTaxiRate: 1400.0,
+    popularDropoffs: [
+      'Radisson Blu MBD Hotel (Sector 18)',
+      'Logix Cyber Park (Sector 62)',
+      'Advant Navis Business Park (Expressway)'
     ],
     activePassengersCount: 9
   },
   {
-    id: 'zone_moscone',
-    name: 'Moscone Convention Center',
-    tagline: 'Tech summits, conventions & SoMa business hub',
-    airportCode: 'SFO',
-    distanceMiles: 13.8,
-    typicalDurationMin: 26,
-    estimatedTaxiRate: 62.0,
+    id: 'zone_southdelhi',
+    name: 'South Delhi & Saket District',
+    tagline: 'Greater Kailash, Hauz Khas & Select Citywalk',
+    airportCode: 'DEL',
+    distanceMiles: 15.2,
+    typicalDurationMin: 30,
+    estimatedTaxiRate: 750.0,
     popularDropoffs: [
-      'Moscone Center South (747 Howard St)',
-      'W San Francisco (181 3rd St)',
-      'InterContinental SF (888 Howard St)'
+      'Sheraton New Delhi (Saket District Centre)',
+      'Eros Hotel (Nehru Place)',
+      'Greater Kailash M-Block Market'
     ],
     activePassengersCount: 14
-  },
-  {
-    id: 'zone_fidi',
-    name: 'Financial District & Embarcadero',
-    tagline: 'Corporate offices, Ferry Building & waterfront',
-    airportCode: 'SFO',
-    distanceMiles: 15.6,
-    typicalDurationMin: 32,
-    estimatedTaxiRate: 68.0,
-    popularDropoffs: [
-      'Salesforce Tower (415 Mission St)',
-      'Hyatt Regency Embarcadero (5 Embarcadero Ctr)',
-      'Four Seasons Embarcadero (222 Sansome St)'
-    ],
-    activePassengersCount: 7
-  },
-  {
-    id: 'zone_paloalto',
-    name: 'Palo Alto & Stanford',
-    tagline: 'Silicon Valley tech campus & Sand Hill Rd',
-    airportCode: 'SFO',
-    distanceMiles: 19.4,
-    typicalDurationMin: 30,
-    estimatedTaxiRate: 78.0,
-    popularDropoffs: [
-      'Stanford Shopping Center (660 Stanford Shopping Ctr)',
-      'Nobu Hotel Palo Alto (180 Hamilton Ave)',
-      'Four Seasons Silicon Valley'
-    ],
-    activePassengersCount: 5
-  },
-  {
-    id: 'zone_wharf',
-    name: 'Fisherman\'s Wharf & Marina',
-    tagline: 'North waterfront, Pier 39 & Ghirardelli',
-    airportCode: 'SFO',
-    distanceMiles: 16.8,
-    typicalDurationMin: 36,
-    estimatedTaxiRate: 72.0,
-    popularDropoffs: [
-      'Hotel Zephyr (250 Beach St)',
-      'Argonaut Hotel (495 Jefferson St)',
-      'Courtyard by Marriott Fisherman\'s Wharf'
-    ],
-    activePassengersCount: 6
   }
 ];
 
+export const DESTINATION_ZONES_BOM: DestinationZone[] = [
+  {
+    id: 'zone_bkc',
+    name: 'Bandra Kurla Complex (BKC)',
+    tagline: 'Financial capital hub, Jio World Convention Centre & consulates',
+    airportCode: 'BOM',
+    distanceMiles: 6.5,
+    typicalDurationMin: 22,
+    estimatedTaxiRate: 450.0,
+    popularDropoffs: [
+      'Trident Hotel BKC',
+      'Sofitel Mumbai BKC',
+      'Jio World Centre'
+    ],
+    activePassengersCount: 18
+  },
+  {
+    id: 'zone_southmumbai',
+    name: 'South Mumbai & Colaba',
+    tagline: 'Nariman Point, Marine Drive, Fort & Taj Mahal Palace',
+    airportCode: 'BOM',
+    distanceMiles: 16.5,
+    typicalDurationMin: 45,
+    estimatedTaxiRate: 850.0,
+    popularDropoffs: [
+      'The Taj Mahal Palace (Colaba)',
+      'The Oberoi (Nariman Point)',
+      'Churchgate Station Area'
+    ],
+    activePassengersCount: 22
+  },
+  {
+    id: 'zone_andheri',
+    name: 'Andheri East & MIDC Tech Hub',
+    tagline: 'SEEPZ, corporate parks & business hotels near Western Express',
+    airportCode: 'BOM',
+    distanceMiles: 4.2,
+    typicalDurationMin: 15,
+    estimatedTaxiRate: 350.0,
+    popularDropoffs: [
+      'The Lalit Mumbai (Sahar Airport Rd)',
+      'Courtyard by Marriott Mumbai International Airport',
+      'MIDC Central Road'
+    ],
+    activePassengersCount: 14
+  }
+];
+
+export const DESTINATION_ZONES_BLR: DestinationZone[] = [
+  {
+    id: 'zone_ecity',
+    name: 'Electronic City & Koramangala',
+    tagline: 'Infosys, Wipro campuses, startup hub & tech parks',
+    airportCode: 'BLR',
+    distanceMiles: 32.0,
+    typicalDurationMin: 65,
+    estimatedTaxiRate: 1350.0,
+    popularDropoffs: [
+      'The Leela Palace (Old Airport Rd)',
+      'The Oterra Hotel (Electronic City Phase 1)',
+      'Koramangala 4th Block'
+    ],
+    activePassengersCount: 24
+  },
+  {
+    id: 'zone_whitefield',
+    name: 'Whitefield & ITPL',
+    tagline: 'International Tech Park Bengaluru & Outer Ring Road',
+    airportCode: 'BLR',
+    distanceMiles: 26.5,
+    typicalDurationMin: 55,
+    estimatedTaxiRate: 1200.0,
+    popularDropoffs: [
+      'The Zuri Whitefield',
+      'ITPL Main Gate (Whitefield)',
+      'Marriott Hotel Whitefield'
+    ],
+    activePassengersCount: 19
+  },
+  {
+    id: 'zone_mgroad',
+    name: 'MG Road & Central Bengaluru',
+    tagline: 'UB City, Brigade Road, hotels & commercial center',
+    airportCode: 'BLR',
+    distanceMiles: 21.0,
+    typicalDurationMin: 45,
+    estimatedTaxiRate: 980.0,
+    popularDropoffs: [
+      'The Ritz-Carlton Bangalore (Residency Rd)',
+      'Taj West End (Race Course Rd)',
+      'UB City Mall'
+    ],
+    activePassengersCount: 17
+  }
+];
+
+export const DESTINATION_ZONES_SFO = DESTINATION_ZONES_DEL;
+
+export function getDestinationZonesForAirport(airportCode: string): DestinationZone[] {
+  switch (airportCode) {
+    case 'BOM':
+      return DESTINATION_ZONES_BOM;
+    case 'BLR':
+      return DESTINATION_ZONES_BLR;
+    case 'DEL':
+    default:
+      return DESTINATION_ZONES_DEL;
+  }
+}
+
 export const INITIAL_GROUPS: RideGroup[] = [
   {
-    id: 'grp_01_downtown',
-    title: 'Downtown Hotels & Union Square',
-    airportCode: 'SFO',
-    destinationZone: 'Downtown & Union Square',
-    primaryAddress: 'Marriott Marquis, 780 Mission St',
-    creatorId: 'usr_sarah_02',
-    creatorName: 'Sarah Lin',
+    id: 'grp_01_cybercity',
+    title: 'Gurgaon Cyber City & Golf Course Rd Split',
+    airportCode: 'DEL',
+    destinationZone: 'Gurgaon Cyber City & Golf Course Rd',
+    primaryAddress: 'The Leela Ambience, Ambience Island, Gurugram',
+    creatorId: 'usr_priya_02',
+    creatorName: 'Priya Sharma',
     vehicleType: 'suv_xl',
     maxRiders: 4,
     maxCarryOn: 4,
@@ -212,45 +333,45 @@ export const INITIAL_GROUPS: RideGroup[] = [
     departureTimeText: 'Leaving around 4:35 PM',
     departureTimestamp: Date.now() + 18 * 60 * 1000,
     status: 'forming',
-    baseMeterEstimate: 66.0,
-    airportTollFee: 7.50,
-    tipAmount: 10.0,
-    platformFeePerRider: 1.25,
+    baseMeterEstimate: 950.0,
+    airportTollFee: 120.0,
+    tipAmount: 100.0,
+    platformFeePerRider: 29.0,
     splitMethod: 'distance_optimized',
     escrowStatus: 'funds_held_in_escrow',
-    notes: 'Arrived on AS 338. At baggage carousel 4 now grabbing bags. Heading to Union Square via 4th St.',
+    notes: 'Landed on AI 802 from BLR. Waiting at Carousel 4 for checked bag. Booking an Ola Prime XL / Innova Crysta.',
     bookedRideshareDetails: {
-      service: 'Uber XL',
-      driverName: 'Carlos M.',
-      carModel: 'Toyota Highlander (Black)',
-      licensePlate: '8TYP902',
-      pickupPillar: 'Level 2 Island Pillar 2B',
+      service: 'Ola Prime SUV',
+      driverName: 'Manish Kumar',
+      carModel: 'Toyota Innova Crysta (White)',
+      licensePlate: 'DL 1ZB 9402',
+      pickupPillar: 'T3 MLCP Level 2 Pillar 14',
       etaMinutes: 12
     },
     members: [
       {
         user: {
-          id: 'usr_sarah_02',
-          name: 'Sarah Lin',
+          id: 'usr_priya_02',
+          name: 'Priya Sharma',
           avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
           isVerified: true,
-          flightNumber: 'AS 338',
-          airline: 'Alaska Airlines',
-          arrivalAirport: 'SFO',
-          terminal: 'Terminal 2',
-          gate: 'Gate 51',
-          baggageCarousel: 'Carousel 4', // Matches Alex!
+          flightNumber: 'AI 802',
+          airline: 'Air India',
+          arrivalAirport: 'DEL',
+          terminal: 'Terminal 3',
+          gate: 'Gate 32',
+          baggageCarousel: 'Carousel 4', // Matches Rohan!
           scheduledArrival: '4:18 PM',
           luggage: { carryOn: 1, checked: 1, personalItem: true },
           status: 'baggage_claim',
-          statusText: 'Spotting yellow suitcase at Carousel 4',
-          currentZoneLocation: 'Baggage Claim Carousel 4'
+          statusText: 'At Carousel 4 watching for red bag',
+          currentZoneLocation: 'T3 Baggage Claim Carousel 4'
         },
         joinedAt: '4:20 PM',
-        dropoffAddress: 'Marriott Marquis, 780 Mission St',
-        distanceMiles: 14.1,
-        splitAmount: 27.80,
-        platformFee: 1.25,
+        dropoffAddress: 'The Leela Ambience, Ambience Island',
+        distanceMiles: 16.2,
+        splitAmount: 395.0,
+        platformFee: 29.0,
         paymentStatus: 'paid',
         dropoffPin: '8214',
         isConfirmedDropoff: true,
@@ -259,27 +380,27 @@ export const INITIAL_GROUPS: RideGroup[] = [
       },
       {
         user: {
-          id: 'usr_marcus_03',
-          name: 'Marcus Vance',
+          id: 'usr_vikram_03',
+          name: 'Vikram Malhotra',
           avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
           isVerified: true,
-          flightNumber: 'DL 402',
-          airline: 'Delta Air Lines',
-          arrivalAirport: 'SFO',
-          terminal: 'Terminal 1',
-          gate: 'Gate B14',
+          flightNumber: 'UK 945',
+          airline: 'Vistara',
+          arrivalAirport: 'DEL',
+          terminal: 'Terminal 3',
+          gate: 'Gate 19',
           baggageCarousel: 'Carousel 2',
           scheduledArrival: '4:22 PM',
           luggage: { carryOn: 1, checked: 0, personalItem: true },
           status: 'walking_to_pickup',
-          statusText: 'Walking over skybridge to Level 2',
-          currentZoneLocation: 'Connecting Skybridge T1 to T2'
+          statusText: 'Walking towards MLCP Level 2',
+          currentZoneLocation: 'T3 Exit Skybridge to MLCP'
         },
         joinedAt: '4:24 PM',
-        dropoffAddress: 'Palace Hotel, 2 New Montgomery St',
-        distanceMiles: 14.6,
-        splitAmount: 28.50,
-        platformFee: 1.25,
+        dropoffAddress: 'DLF Cyber City Building 10',
+        distanceMiles: 17.5,
+        splitAmount: 415.0,
+        platformFee: 29.0,
         paymentStatus: 'escrow_held',
         dropoffPin: '3951',
         isConfirmedDropoff: false
@@ -290,8 +411,8 @@ export const INITIAL_GROUPS: RideGroup[] = [
         id: 'stop_airport',
         stopIndex: 0,
         passengerId: 'origin',
-        passengerName: 'SFO Terminal 2 Level 2',
-        address: 'SFO Level 2 Rideshare Zone, Island 3, Pillar 2B',
+        passengerName: 'DEL T3 MLCP Level 2',
+        address: 'Indira Gandhi Int\'l T3 Multi-Level Parking Level 2, Pillar 14',
         zoneName: 'Airport Origin',
         distanceFromAirportMiles: 0,
         estimatedArrivalMin: 0,
@@ -300,33 +421,33 @@ export const INITIAL_GROUPS: RideGroup[] = [
       {
         id: 'stop_1',
         stopIndex: 1,
-        passengerId: 'usr_sarah_02',
-        passengerName: 'Sarah Lin',
-        address: 'Marriott Marquis, 780 Mission St',
-        zoneName: 'Downtown & Union Square',
-        distanceFromAirportMiles: 14.1,
-        estimatedArrivalMin: 27
+        passengerId: 'usr_priya_02',
+        passengerName: 'Priya Sharma',
+        address: 'The Leela Ambience, Ambience Island, Gurugram',
+        zoneName: 'Gurgaon Cyber City',
+        distanceFromAirportMiles: 16.2,
+        estimatedArrivalMin: 26
       },
       {
         id: 'stop_2',
         stopIndex: 2,
-        passengerId: 'usr_marcus_03',
-        passengerName: 'Marcus Vance',
-        address: 'Palace Hotel, 2 New Montgomery St',
-        zoneName: 'Financial & Market',
-        distanceFromAirportMiles: 14.6,
+        passengerId: 'usr_vikram_03',
+        passengerName: 'Vikram Malhotra',
+        address: 'DLF Cyber City Building 10, Gurugram',
+        zoneName: 'Gurgaon Cyber City',
+        distanceFromAirportMiles: 17.5,
         estimatedArrivalMin: 32
       }
     ]
   },
   {
-    id: 'grp_02_moscone',
-    title: 'Moscone Convention Center Tech Split',
-    airportCode: 'SFO',
-    destinationZone: 'Moscone Convention Center',
-    primaryAddress: 'Moscone South, 747 Howard St',
-    creatorId: 'usr_priya_04',
-    creatorName: 'Priya Patel',
+    id: 'grp_02_cp',
+    title: 'Connaught Place & Central Delhi Cab Split',
+    airportCode: 'DEL',
+    destinationZone: 'Connaught Place & Central Delhi',
+    primaryAddress: 'The Taj Mahal Hotel, 1 Mansingh Rd',
+    creatorId: 'usr_ananya_04',
+    creatorName: 'Ananya Deshmukh',
     vehicleType: 'sedan',
     maxRiders: 3,
     maxCarryOn: 2,
@@ -334,64 +455,64 @@ export const INITIAL_GROUPS: RideGroup[] = [
     departureTimeText: 'Leaving around 4:45 PM',
     departureTimestamp: Date.now() + 25 * 60 * 1000,
     status: 'forming',
-    baseMeterEstimate: 62.0,
-    airportTollFee: 7.50,
-    tipAmount: 8.0,
-    platformFeePerRider: 1.25,
+    baseMeterEstimate: 850.0,
+    airportTollFee: 120.0,
+    tipAmount: 80.0,
+    platformFeePerRider: 29.0,
     splitMethod: 'equal',
     escrowStatus: 'idle',
-    notes: 'Heading directly to Moscone Center for badge check-in. Only carry-on luggage preferred.',
+    notes: 'Heading to Central Delhi via Dhaula Kuan. Carry-on luggage preferred.',
     members: [
       {
         user: {
-          id: 'usr_priya_04',
-          name: 'Priya Patel',
+          id: 'usr_ananya_04',
+          name: 'Ananya Deshmukh',
           avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
           isVerified: true,
-          flightNumber: 'UA 1248',
-          airline: 'United Airlines',
-          arrivalAirport: 'SFO',
-          terminal: 'Terminal 2',
-          gate: 'Gate 54',
+          flightNumber: '6E 214',
+          airline: 'IndiGo',
+          arrivalAirport: 'DEL',
+          terminal: 'Terminal 3',
+          gate: 'Gate 28',
           baggageCarousel: 'Carousel 4',
           scheduledArrival: '4:15 PM',
           luggage: { carryOn: 1, checked: 0, personalItem: true },
           status: 'baggage_claim',
-          statusText: 'No checked bag, waiting near Carousel 4 exit',
-          currentZoneLocation: 'Baggage Claim Hall T2'
+          statusText: 'Carry-on only, waiting at T3 Exit Gate 4',
+          currentZoneLocation: 'T3 Arrival Forecourt'
         },
         joinedAt: '4:21 PM',
-        dropoffAddress: 'Moscone South, 747 Howard St',
-        distanceMiles: 13.8,
-        splitAmount: 38.75,
-        platformFee: 1.25,
+        dropoffAddress: 'The Taj Mahal Hotel, 1 Mansingh Rd',
+        distanceMiles: 18.2,
+        splitAmount: 540.0,
+        platformFee: 29.0,
         paymentStatus: 'pending',
         dropoffPin: '6192',
         isCreator: true
       },
       {
         user: {
-          id: 'usr_david_05',
-          name: 'David Chen',
+          id: 'usr_arjun_05',
+          name: 'Arjun Singhania',
           avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
           isVerified: true,
-          flightNumber: 'AA 1092',
-          airline: 'American Airlines',
-          arrivalAirport: 'SFO',
-          terminal: 'Terminal 1',
-          gate: 'Gate B8',
+          flightNumber: 'QP 131',
+          airline: 'Akasa Air',
+          arrivalAirport: 'DEL',
+          terminal: 'Terminal 2',
+          gate: 'Gate 14',
           baggageCarousel: 'Carousel 1',
           scheduledArrival: '4:25 PM',
           luggage: { carryOn: 1, checked: 1, personalItem: true },
           status: 'walking_to_pickup',
-          statusText: 'Claimed bag, on moving walkway to rideshare',
-          currentZoneLocation: 'Terminal 1 moving walkway'
+          statusText: 'Taking shuttle from T2 to T3 pickup bay',
+          currentZoneLocation: 'Inter-terminal walkway'
         },
         joinedAt: '4:27 PM',
-        dropoffAddress: 'W San Francisco, 181 3rd St',
-        distanceMiles: 13.9,
-        splitAmount: 38.75,
-        platformFee: 1.25,
+        dropoffAddress: 'Shangri-La Eros, Ashoka Rd',
+        distanceMiles: 18.5,
+        splitAmount: 540.0,
+        platformFee: 29.0,
         paymentStatus: 'pending',
         dropoffPin: '1482'
       }
@@ -401,8 +522,8 @@ export const INITIAL_GROUPS: RideGroup[] = [
         id: 'stop_airport_2',
         stopIndex: 0,
         passengerId: 'origin',
-        passengerName: 'SFO Terminal 2 Pickup',
-        address: 'SFO Terminal 2 Rideshare Courtyard',
+        passengerName: 'DEL Terminal 3 Pickup',
+        address: 'DEL Terminal 3 MLCP Pickup Bay 3',
         zoneName: 'Airport Origin',
         distanceFromAirportMiles: 0,
         estimatedArrivalMin: 0,
@@ -411,33 +532,33 @@ export const INITIAL_GROUPS: RideGroup[] = [
       {
         id: 'stop_2_1',
         stopIndex: 1,
-        passengerId: 'usr_david_05',
-        passengerName: 'David Chen',
-        address: 'W San Francisco, 181 3rd St',
-        zoneName: 'Moscone Convention Center',
-        distanceFromAirportMiles: 13.9,
-        estimatedArrivalMin: 25
+        passengerId: 'usr_ananya_04',
+        passengerName: 'Ananya Deshmukh',
+        address: 'The Taj Mahal Hotel, 1 Mansingh Rd',
+        zoneName: 'Connaught Place & Central Delhi',
+        distanceFromAirportMiles: 18.2,
+        estimatedArrivalMin: 32
       },
       {
         id: 'stop_2_2',
         stopIndex: 2,
-        passengerId: 'usr_priya_04',
-        passengerName: 'Priya Patel',
-        address: 'Moscone South, 747 Howard St',
-        zoneName: 'Moscone Convention Center',
-        distanceFromAirportMiles: 14.1,
-        estimatedArrivalMin: 28
+        passengerId: 'usr_arjun_05',
+        passengerName: 'Arjun Singhania',
+        address: 'Shangri-La Eros, 19 Ashoka Rd',
+        zoneName: 'Connaught Place',
+        distanceFromAirportMiles: 18.5,
+        estimatedArrivalMin: 36
       }
     ]
   },
   {
-    id: 'grp_03_fidi',
-    title: 'Financial District & Embarcadero',
-    airportCode: 'SFO',
-    destinationZone: 'Financial District & Embarcadero',
-    primaryAddress: 'Salesforce Tower, 415 Mission St',
-    creatorId: 'usr_elena_06',
-    creatorName: 'Elena Rostova',
+    id: 'grp_03_noida',
+    title: 'Noida IT Park & Sector 62 Ride Share',
+    airportCode: 'DEL',
+    destinationZone: 'Noida Sector 62 & IT Corridor',
+    primaryAddress: 'Logix Cyber Park, Sector 62, Noida',
+    creatorId: 'usr_kunal_06',
+    creatorName: 'Kunal Kapoor',
     vehicleType: 'sedan',
     maxRiders: 3,
     maxCarryOn: 3,
@@ -445,37 +566,37 @@ export const INITIAL_GROUPS: RideGroup[] = [
     departureTimeText: 'Leaving around 4:55 PM',
     departureTimestamp: Date.now() + 35 * 60 * 1000,
     status: 'forming',
-    baseMeterEstimate: 68.0,
-    airportTollFee: 7.50,
-    tipAmount: 10.0,
-    platformFeePerRider: 1.25,
+    baseMeterEstimate: 1400.0,
+    airportTollFee: 150.0,
+    tipAmount: 100.0,
+    platformFeePerRider: 29.0,
     splitMethod: 'distance_optimized',
     escrowStatus: 'idle',
-    notes: 'Flight just touched down. Waiting for terminal deplaning. Heading straight to Embarcadero.',
+    notes: 'Heading towards Noida via Barapullah / DND Flyway. Looking to split an Uber or BluSmart.',
     members: [
       {
         user: {
-          id: 'usr_elena_06',
-          name: 'Elena Rostova',
+          id: 'usr_kunal_06',
+          name: 'Kunal Kapoor',
           avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80',
           isVerified: true,
-          flightNumber: 'UA 1248',
-          airline: 'United Airlines',
-          arrivalAirport: 'SFO',
-          terminal: 'Terminal 2',
-          gate: 'Gate 54',
+          flightNumber: '6E 214',
+          airline: 'IndiGo',
+          arrivalAirport: 'DEL',
+          terminal: 'Terminal 3',
+          gate: 'Gate 28',
           baggageCarousel: 'Carousel 4',
           scheduledArrival: '4:15 PM',
           luggage: { carryOn: 1, checked: 1, personalItem: false },
           status: 'just_landed',
-          statusText: 'Still on the jetbridge',
-          currentZoneLocation: 'Gate 54 Jetbridge'
+          statusText: 'Deplaning aerobridge',
+          currentZoneLocation: 'Gate 28 Aerobridge'
         },
         joinedAt: '4:17 PM',
-        dropoffAddress: 'Salesforce Tower, 415 Mission St',
-        distanceMiles: 15.6,
-        splitAmount: 85.50,
-        platformFee: 1.25,
+        dropoffAddress: 'Logix Cyber Park, Sector 62, Noida',
+        distanceMiles: 34.0,
+        splitAmount: 1679.0,
+        platformFee: 29.0,
         paymentStatus: 'pending',
         dropoffPin: '9034',
         isCreator: true
@@ -486,8 +607,8 @@ export const INITIAL_GROUPS: RideGroup[] = [
         id: 'stop_airport_3',
         stopIndex: 0,
         passengerId: 'origin',
-        passengerName: 'SFO Terminal 2',
-        address: 'SFO Level 2 Island',
+        passengerName: 'DEL Terminal 3',
+        address: 'DEL T3 MLCP Level 2',
         zoneName: 'Airport Origin',
         distanceFromAirportMiles: 0,
         estimatedArrivalMin: 0,
@@ -496,56 +617,56 @@ export const INITIAL_GROUPS: RideGroup[] = [
       {
         id: 'stop_3_1',
         stopIndex: 1,
-        passengerId: 'usr_elena_06',
-        passengerName: 'Elena Rostova',
-        address: 'Salesforce Tower, 415 Mission St',
-        zoneName: 'Financial District & Embarcadero',
-        distanceFromAirportMiles: 15.6,
-        estimatedArrivalMin: 32
+        passengerId: 'usr_kunal_06',
+        passengerName: 'Kunal Kapoor',
+        address: 'Logix Cyber Park, Sector 62, Noida',
+        zoneName: 'Noida Sector 62',
+        distanceFromAirportMiles: 34.0,
+        estimatedArrivalMin: 52
       }
     ]
   }
 ];
 
 export const INITIAL_CHAT_MESSAGES: Record<string, ChatMessage[]> = {
-  'grp_01_downtown': [
+  'grp_01_cybercity': [
     {
       id: 'msg_01',
-      groupId: 'grp_01_downtown',
+      groupId: 'grp_01_cybercity',
       senderId: 'system',
       senderName: 'easy_share Bot',
       senderAvatar: '',
-      text: 'Ride group created for Downtown & Union Square. Estimated taxi meter: $66.00 ($33.00/person for 2 riders).',
+      text: 'Ride group created for Gurgaon Cyber City. Estimated fare: ₹950.00 (~₹360/person with 3 riders). Flat ₹29 micro-fee.',
       timestamp: '4:21 PM',
       type: 'system'
     },
     {
       id: 'msg_02',
-      groupId: 'grp_01_downtown',
-      senderId: 'usr_sarah_02',
-      senderName: 'Sarah Lin',
+      groupId: 'grp_01_cybercity',
+      senderId: 'usr_priya_02',
+      senderName: 'Priya Sharma',
       senderAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
-      text: 'Hi Marcus! Just waiting at carousel 4 for my checked roller bag.',
+      text: 'Hi Vikram! Just waiting at carousel 4 for my red checked bag.',
       timestamp: '4:22 PM',
       type: 'text'
     },
     {
       id: 'msg_03',
-      groupId: 'grp_01_downtown',
-      senderId: 'usr_marcus_03',
-      senderName: 'Marcus Vance',
+      groupId: 'grp_01_cybercity',
+      senderId: 'usr_vikram_03',
+      senderName: 'Vikram Malhotra',
       senderAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-      text: 'Hey Sarah! I only had carry-on so I am walking over from T1 toward Level 2 pickup island now.',
+      text: 'Hey Priya! I only have cabin luggage so I am walking toward T3 MLCP Level 2 pillar 14 now.',
       timestamp: '4:25 PM',
       type: 'text'
     },
     {
       id: 'msg_04',
-      groupId: 'grp_01_downtown',
+      groupId: 'grp_01_cybercity',
       senderId: 'system',
       senderName: 'easy_share Bot',
       senderAvatar: '',
-      text: '🚗 Sarah pre-reserved Uber XL (Black Toyota Highlander, Plate: 8TYP902). Pickup at Terminal 2, Level 2 Island Pillar 2B.',
+      text: '🚗 Priya pre-reserved Ola Prime SUV (White Innova Crysta, Plate: DL 1ZB 9402). Meeting spot: T3 MLCP Level 2 Pillar 14.',
       timestamp: '4:27 PM',
       type: 'system'
     }
@@ -554,83 +675,83 @@ export const INITIAL_CHAT_MESSAGES: Record<string, ChatMessage[]> = {
 
 export const QUICK_AIRPORT_REPLIES = [
   '🧳 Just spotted my bag on the carousel!',
-  '🚶 Heading to Level 2 pickup island now',
-  '📍 I am standing at Pillar 2B',
-  '☕ Grabbing quick coffee near security exit',
+  '🚶 Heading to MLCP Level 2 pickup zone now',
+  '📍 I am standing near Pillar 14',
+  '☕ Grabbing quick chai near arrival exit',
   '🚕 Driver is 3 minutes away'
 ];
 
 export const INITIAL_PAYMENTS: PaymentRecord[] = [
   {
     id: 'pay_rec_01',
-    rideId: 'grp_01_downtown',
-    rideTitle: 'Downtown Hotels & Union Square Split',
-    airportCode: 'SFO',
-    flightNumber: 'UA 1248',
+    rideId: 'grp_01_cybercity',
+    rideTitle: 'Gurgaon Cyber City & Golf Course Rd Split',
+    airportCode: 'DEL',
+    flightNumber: '6E 214',
     date: 'Oct 26, 2026',
     timestamp: Date.now() - 25 * 60 * 1000,
-    destinationAddress: 'Marriott Marquis, 780 Mission St',
+    destinationAddress: 'The Leela Ambience, Ambience Island, Gurugram',
     ridersCount: 3,
-    coRiders: ['Sarah Lin', 'Marcus Vance'],
+    coRiders: ['Priya Sharma', 'Vikram Malhotra'],
     splitMethod: 'distance_optimized',
-    totalRideCost: 83.50,
-    myFareShare: 22.00,
-    myTollShare: 2.50,
-    myTipShare: 3.33,
-    platformFee: 1.25,
-    totalAmountPaid: 29.08,
-    savingsVsSolo: 42.92,
-    paymentMethod: 'Apple Pay (Visa •••• 4242)',
+    totalRideCost: 1170.0,
+    myFareShare: 320.0,
+    myTollShare: 40.0,
+    myTipShare: 33.0,
+    platformFee: 29.0,
+    totalAmountPaid: 422.0,
+    savingsVsSolo: 780.0,
+    paymentMethod: 'UPI / Google Pay (HDFC •••• 4242)',
     status: 'in_escrow',
     dropoffPin: '8214',
-    receiptNumber: 'ES-2026-SFO-8921'
+    receiptNumber: 'ES-2026-DEL-8921'
   },
   {
     id: 'pay_rec_02',
-    rideId: 'grp_past_jfk_01',
-    rideTitle: 'Midtown Manhattan & Times Square Share',
-    airportCode: 'JFK',
-    flightNumber: 'DL 402',
+    rideId: 'grp_past_bom_01',
+    rideTitle: 'Bandra Kurla Complex (BKC) & South Mumbai',
+    airportCode: 'BOM',
+    flightNumber: 'AI 802',
     date: 'Oct 14, 2026',
     timestamp: Date.now() - 12 * 24 * 60 * 60 * 1000,
-    destinationAddress: 'Hilton Midtown, 1335 6th Ave',
+    destinationAddress: 'Trident Hotel BKC, Bandra',
     ridersCount: 4,
-    coRiders: ['Liam Gallagher', 'Chloe Zhang', 'David M.'],
+    coRiders: ['Siddharth Mehta', 'Ananya Iyer', 'Dev Patel'],
     splitMethod: 'equal',
-    totalRideCost: 96.00,
-    myFareShare: 20.00,
-    myTollShare: 2.25,
-    myTipShare: 2.50,
-    platformFee: 1.25,
-    totalAmountPaid: 26.00,
-    savingsVsSolo: 52.50,
-    paymentMethod: 'Apple Pay (Visa •••• 4242)',
+    totalRideCost: 1250.0,
+    myFareShare: 260.0,
+    myTollShare: 35.0,
+    myTipShare: 25.0,
+    platformFee: 29.0,
+    totalAmountPaid: 349.0,
+    savingsVsSolo: 820.0,
+    paymentMethod: 'UPI / PhonePe',
     status: 'settled',
     dropoffPin: '4190',
-    receiptNumber: 'ES-2026-JFK-4109'
+    receiptNumber: 'ES-2026-BOM-4109'
   },
   {
     id: 'pay_rec_03',
-    rideId: 'grp_past_ord_01',
-    rideTitle: 'The Loop Financial District & River North',
-    airportCode: 'ORD',
-    flightNumber: 'AA 1092',
+    rideId: 'grp_past_blr_01',
+    rideTitle: 'Electronic City & Koramangala IT Corridor',
+    airportCode: 'BLR',
+    flightNumber: 'UK 945',
     date: 'Sep 28, 2026',
     timestamp: Date.now() - 28 * 24 * 60 * 60 * 1000,
-    destinationAddress: 'Palmer House Hilton, 17 E Monroe St',
+    destinationAddress: 'The Leela Palace, Old Airport Rd, Bengaluru',
     ridersCount: 3,
-    coRiders: ['Jessica Alba', 'Kevin Vance'],
+    coRiders: ['Sneha Reddy', 'Aditya Roy'],
     splitMethod: 'distance_optimized',
-    totalRideCost: 72.00,
-    myFareShare: 19.50,
-    myTollShare: 2.00,
-    myTipShare: 2.67,
-    platformFee: 1.25,
-    totalAmountPaid: 25.42,
-    savingsVsSolo: 38.58,
-    paymentMethod: 'Google Pay (Mastercard •••• 8819)',
+    totalRideCost: 1350.0,
+    myFareShare: 380.0,
+    myTollShare: 45.0,
+    myTipShare: 35.0,
+    platformFee: 29.0,
+    totalAmountPaid: 489.0,
+    savingsVsSolo: 920.0,
+    paymentMethod: 'RuPay Card (SBI •••• 9921)',
     status: 'settled',
     dropoffPin: '7301',
-    receiptNumber: 'ES-2026-ORD-7712'
+    receiptNumber: 'ES-2026-BLR-7712'
   }
 ];

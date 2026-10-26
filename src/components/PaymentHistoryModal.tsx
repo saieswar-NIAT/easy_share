@@ -37,13 +37,13 @@ Riders: ${p.ridersCount} (${p.coRiders.join(', ')})
 Split Algorithm: ${p.splitMethod === 'distance_optimized' ? 'Distance-Optimized' : 'Equal Split'}
 
 Charges Breakdown:
-• Meter/Distance Fare Share: $${p.myFareShare.toFixed(2)}
-• Airport Toll & Fee Share: $${p.myTollShare.toFixed(2)}
-• Driver Tip Share: $${p.myTipShare.toFixed(2)}
-• easy_share Platform Micro-Fee: $${p.platformFee.toFixed(2)}
+• Meter/Distance Fare Share: ₹${p.myFareShare.toFixed(2)}
+• Airport Toll & Fee Share: ₹${p.myTollShare.toFixed(2)}
+• Driver Tip Share: ₹${p.myTipShare.toFixed(2)}
+• easy_share Platform Micro-Fee: ₹${p.platformFee.toFixed(2)}
 -------------------------------------
-TOTAL CHARGED: $${p.totalAmountPaid.toFixed(2)}
-SAVINGS VS SOLO TAXI: $${p.savingsVsSolo.toFixed(2)}
+TOTAL CHARGED: ₹${p.totalAmountPaid.toFixed(2)}
+SAVINGS VS SOLO TAXI: ₹${p.savingsVsSolo.toFixed(2)}
 Payment Method: ${p.paymentMethod}
 Escrow Status: ${p.status.toUpperCase()}
 Drop-off Security PIN: ${p.dropoffPin}`;
@@ -54,7 +54,7 @@ Drop-off Security PIN: ${p.dropoffPin}`;
   };
 
   const handleDownloadReceipt = (p: PaymentRecord) => {
-    const text = `easy_share Official Trip Receipt\nReceipt #: ${p.receiptNumber}\nDate: ${p.date}\nTotal: $${p.totalAmountPaid.toFixed(2)}\nSavings: $${p.savingsVsSolo.toFixed(2)}\nPayment: ${p.paymentMethod}`;
+    const text = `easy_share Official Trip Receipt\nReceipt #: ${p.receiptNumber}\nDate: ${p.date}\nTotal: ₹${p.totalAmountPaid.toFixed(2)}\nSavings: ₹${p.savingsVsSolo.toFixed(2)}\nPayment: ${p.paymentMethod}`;
     const blob = new Blob([text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -103,7 +103,7 @@ Drop-off Security PIN: ${p.dropoffPin}`;
                 Lifetime Savings
               </span>
               <div className="text-2xl font-extrabold font-mono text-emerald-600 mt-0.5">
-                +${lifetimeSaved.toFixed(2)}
+                +₹{lifetimeSaved.toFixed(0)}
               </div>
               <span className="text-[11px] text-slate-400">vs taking solo airport taxis</span>
             </div>
@@ -115,7 +115,7 @@ Drop-off Security PIN: ${p.dropoffPin}`;
               <div className="text-2xl font-extrabold font-mono text-slate-900 mt-0.5">
                 {totalRides} Trips
               </div>
-              <span className="text-[11px] text-slate-400">Avg ${(lifetimeSaved / Math.max(1, totalRides)).toFixed(0)} saved / ride</span>
+              <span className="text-[11px] text-slate-400">Avg ₹{(lifetimeSaved / Math.max(1, totalRides)).toFixed(0)} saved / ride</span>
             </div>
 
             <div className="bg-white/90 p-3.5 rounded-2xl border border-blue-100 shadow-2xs">
@@ -123,9 +123,9 @@ Drop-off Security PIN: ${p.dropoffPin}`;
                 Platform Micro-Fees
               </span>
               <div className="text-2xl font-extrabold font-mono text-blue-600 mt-0.5">
-                ${lifetimeFeesPaid.toFixed(2)}
+                ₹{lifetimeFeesPaid.toFixed(0)}
               </div>
-              <span className="text-[11px] text-emerald-700 font-medium">Flat $1.25 fee · 0% surge</span>
+              <span className="text-[11px] text-emerald-700 font-medium">Flat ₹29 fee · 0% surge</span>
             </div>
           </div>
         </div>
@@ -219,10 +219,10 @@ Drop-off Security PIN: ${p.dropoffPin}`;
                   <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-100">
                     <div className="text-right">
                       <div className="text-base font-extrabold font-mono text-slate-900">
-                        ${record.totalAmountPaid.toFixed(2)}
+                        ₹{record.totalAmountPaid.toFixed(2)}
                       </div>
                       <div className="text-[10px] font-mono text-emerald-600 font-semibold">
-                        Saved +${record.savingsVsSolo.toFixed(2)}
+                        Saved +₹{record.savingsVsSolo.toFixed(2)}
                       </div>
                     </div>
 
@@ -269,27 +269,27 @@ Drop-off Security PIN: ${p.dropoffPin}`;
                     <div className="space-y-1.5 pt-1 text-slate-700">
                       <div className="flex justify-between">
                         <span>Meter & Highway Distance Share</span>
-                        <span className="font-mono font-semibold">${record.myFareShare.toFixed(2)}</span>
+                        <span className="font-mono font-semibold">₹{record.myFareShare.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Airport Surcharge & Bridge Toll Share</span>
-                        <span className="font-mono font-semibold">${record.myTollShare.toFixed(2)}</span>
+                        <span className="font-mono font-semibold">₹{record.myTollShare.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Driver Tip Share (100% to Driver)</span>
-                        <span className="font-mono font-semibold">${record.myTipShare.toFixed(2)}</span>
+                        <span className="font-mono font-semibold">₹{record.myTipShare.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between text-blue-700 font-medium">
                         <span className="flex items-center gap-1">
                           easy_share Flat Platform Micro-Fee
                           <span className="text-[10px] bg-blue-100 px-1 rounded">No Surge</span>
                         </span>
-                        <span className="font-mono font-semibold">${record.platformFee.toFixed(2)}</span>
+                        <span className="font-mono font-semibold">₹{record.platformFee.toFixed(2)}</span>
                       </div>
                       
                       <div className="pt-2 border-t border-slate-200 flex justify-between font-bold text-slate-900 text-sm">
                         <span>Total Paid</span>
-                        <span className="font-mono">${record.totalAmountPaid.toFixed(2)}</span>
+                        <span className="font-mono">₹{record.totalAmountPaid.toFixed(2)}</span>
                       </div>
                     </div>
 
