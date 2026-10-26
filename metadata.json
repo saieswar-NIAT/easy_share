@@ -1,0 +1,6 @@
+{
+  "name": "easy_share",
+  "description": "Airport rideshare and taxi fare splitting platform connecting landing passengers headed to shared destinations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
